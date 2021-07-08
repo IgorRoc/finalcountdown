@@ -12,27 +12,40 @@ body {
 	height: 100vh;
     display: flex;
     justify-content: center;
+
+    overflow: hidden;
+}
+
+#wrapperGlobal {
+    width: 100vw;
+    max-width: 1000px;
+    height: 100vh;
+
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
 }
 
 header {
 	color: #f1f1f1;
-	margin: 20px 30px;
+	padding: 20px 30px;
+    height: 5vh;
 }
 
 main {
-	max-height: 80vh;
+    max-height: 75vh;
 	overflow: auto;
 }
 
 footer {
-	background-color: #272727;
+    max-height: 5vh;
+    background-color: #272727;
 	border-radius: 7px;
 	color: #f1f1f1;
 
 	display: flex;
 	align-items: center;
 
-	height: 50px;
 	margin: 10px;
 	margin-top: auto;
 	padding: 10px 20px;
@@ -43,15 +56,6 @@ input {
 	font-size: 16px;
 	font-family: "Rubik", sans-serif;
 	font-weight: 400;
-}
-
-#wrapperGlobal {
-	width: 100vw;
-    max-width: 1000px;
-	height: 100vh;
-
-	display: flex;
-	flex-direction: column;
 }
 
 .nota {
