@@ -20,6 +20,8 @@ body {
     width: 100vw;
     max-width: 1000px;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100); /* Mobile height */
+
 
     display: flex;
     gap: 10px;

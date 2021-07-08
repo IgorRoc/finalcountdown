@@ -1,3 +1,6 @@
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 let wrapper = document.querySelector("#wrapperNotas")
 let novaNota = document.querySelector("#novaNota")
 let botaoAddNota = document.querySelector("#botaoAddNota")
