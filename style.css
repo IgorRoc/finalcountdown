@@ -22,7 +22,7 @@ header {
 footer {
 	background-color: #272727;
 	border-radius: 7px;
-	color: #fbd757;
+	color: #f1f1f1;
 
 	display: flex;
 	align-items: center;
@@ -62,8 +62,16 @@ input {
 	margin-left: 10px;
 }
 
-#finalValue span {
-	color: #44c9e1;
+#finalValue span.mediaRed{
+    color: #F7665E;
+}
+
+#finalValue span.mediaYellow{
+    color: #F7EC69;
+}
+
+#finalValue span.mediaGreen{
+    color: #73D673;
 }
 
 .botaoVariableValue {
