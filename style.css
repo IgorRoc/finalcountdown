@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Rubik", sans-serif;
+	background-color: #181818;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	color: #f1f1f1;
+	margin: 20px 30px;
+}
+
+footer {
+	background-color: #272727;
+	border-radius: 7px;
+	color: #fbd757;
+
+	display: flex;
+	align-items: center;
+
+	height: 50px;
+	margin: 10px;
+	margin-top: auto;
+	padding: 10px 20px;
+    max-height: fit-content;
+}
+
+input {
+	font-size: 16px;
+	font-family: "Rubik", sans-serif;
+	font-weight: 400;
+}
+
+.nota {
+	background-color: #272727;
+	border-radius: 7px;
+
+	display: flex;
+	align-items: center;
+
+	height: 50px;
+	margin: 10px;
+	padding: 0 20px;
+}
+
+.info {
+	color: #44c9e1;
+	width: 200px;
+}
+
+.value {
+	color: #fbd757;
+	margin-left: 10px;
+}
+
+#finalValue span {
+	color: #44c9e1;
+}
+
+.botaoVariableValue {
+    position: relative;
+    margin-left: auto;
+}
+
+.inputValor {
+	display: inline-block;
+
+	width: 100px;
+	margin-left: 10px;
+
+	background: none;
+	outline: none;
+	border: none;
+	border-bottom: solid 1px #1b1b1b;
+	color: #fbd757;
+}
+
+.inputValor:focus {
+	border-bottom: solid 1px white;
+}
+
+.excluir {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+	fill: white;
+	margin-left: auto;
+	transform: scale(0.8);
+
+    cursor: pointer;
+    transition: background-color 300ms ease,
+                fill 300ms ease;
+}
+
+.excluir:hover{
+    fill: #44c9e1;
+    background-color: white;
+}
+
+#botaoAddNota {
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    padding: 5px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    fill: white;
+    cursor: pointer;
+	transform: scale(0.8);
+    transition: background-color 300ms ease,
+                fill 300ms ease;
+}
+
+#botaoAddNota:hover{
+    fill: #44c9e1;
+    background-color: white;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+.cbx {
+	-webkit-user-select: none;
+	user-select: none;
+	cursor: pointer;
+	padding: 6px 8px;
+	border-radius: 6px;
+	overflow: hidden;
+	transition: all 0.2s ease;
+}
+.cbx:hover {
+	background: rgba(0, 119, 255, 0.06);
+}
+.cbx span {
+	float: left;
+	vertical-align: middle;
+	transform: translate3d(0, 0, 0);
+}
+.cbx span:first-child {
+	position: relative;
+	width: 18px;
+	height: 18px;
+	border-radius: 4px;
+	transform: scale(1);
+	border: 1px solid #cccfdb;
+	transition: all 0.2s ease;
+	box-shadow: 0 1px 1px rgba(0, 16, 75, 0.05);
+}
+.cbx span:first-child svg {
+	position: absolute;
+	top: 3px;
+	left: 2px;
+	fill: none;
+	stroke: #fff;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-dasharray: 16px;
+	stroke-dashoffset: 16px;
+	transition: all 0.3s ease;
+	transition-delay: 0.1s;
+	transform: translate3d(0, 0, 0);
+}
+.cbx span:last-child {
+	padding-left: 8px;
+	line-height: 18px;
+}
+.cbx:hover span:first-child {
+	border-color: #07f;
+}
+.inp-cbx {
+	position: absolute;
+	visibility: hidden;
+}
+.inp-cbx:checked + .cbx span:first-child {
+	background: #07f;
+	border-color: #07f;
+	animation: wave 0.4s ease;
+}
+.inp-cbx:checked + .cbx span:first-child svg {
+	stroke-dashoffset: 0;
+}
+
+.inline-svg {
+	position: absolute;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+	user-select: none;
+}
+
+@-moz-keyframes wave {
+	50% {
+		transform: scale(0.9);
+	}
+}
+@-webkit-keyframes wave {
+	50% {
+		transform: scale(0.9);
+	}
+}
+@-o-keyframes wave {
+	50% {
+		transform: scale(0.9);
+	}
+}
+@keyframes wave {
+	50% {
+		transform: scale(0.9);
+	}
+}

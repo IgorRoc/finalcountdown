@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Final Countdown</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>Final Countdown</header>
-    <main></main>
-    <footer>Sua média é </footer>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Final Countdown</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Final Countdown</h1>
+		</header>
+		<main id="wrapperNotas">
+			<div class="nota" id="novaNota">
+				<div class="info">
+					Nota: <input id="nota" class="inputValor" type="number" />
+				</div>
+				<div class="info">
+					Peso:
+					<input
+						id="peso"
+						class="inputValor"
+						type="number"
+						required
+					/>
+				</div>
+				<!-- <div class="botaoVariableValue">
+                    <input class="inp-cbx" id="morning" type="checkbox" />
+                    <label class="cbx" for="morning">
+                        <span>
+                            <svg width="12px" height="10px">
+                                <use xlink:href="#check"></use>
+                            </svg>
+                        </span>
+                    </label>
+                </div> -->
+				<div id="botaoAddNota">
+					<!-- prettier-ignore -->
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<p id="finalValue">
+				Insira suas notas para eu calcular!<br />
+				Deixe <span>vazio</span> o campo de <span>nota</span> para que eu possa te mostrar quanto
+				você precisa.
+			</p>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
 </html>
