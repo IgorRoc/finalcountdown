@@ -53,7 +53,7 @@ function insereNovaNota(nota, peso) {
 	info2.appendChild(value2)
 	excluir.innerHTML = `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" > <path d="M19 24h-14c-1.104 0-2-.896-2-2v-17h-1v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2h-1v17c0 1.104-.896 2-2 2zm0-19h-14v16.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-16.5zm-7 7.586l3.293-3.293 1.414 1.414-3.293 3.293 3.293 3.293-1.414 1.414-3.293-3.293-3.293 3.293-1.414-1.414 3.293-3.293-3.293-3.293 1.414-1.414 3.293 3.293zm2-10.586h-4v1h4v-1z" /> </svg>`
 	excluir.setAttribute("onclick", "excluirNota(this)")
-    newNota.appendChild(info1)
+	newNota.appendChild(info1)
 	newNota.appendChild(info2)
 	newNota.appendChild(excluir)
 
@@ -61,10 +61,13 @@ function insereNovaNota(nota, peso) {
 }
 
 function excluirNota(object) {
-	console.log(object.parentElement)
 	object.parentElement.remove()
-
 	verificaMedia()
+	if(wrapper.childElementCount <= 1){
+		let obs = document.querySelector("#finalValue")
+		obs.innerHTML = `Insira suas notas para eu calcular!<br />Deixe <span class="mediaYellow">vazio</span> o campo de <span class="mediaYellow">nota</span> para que eu possa te mostrar quanto você precisa.`
+	}
+
 }
 
 function verificaMedia() {
@@ -86,16 +89,12 @@ function verificaMedia() {
 
 	media = dividendo / divisor
 
-	console.log(media)
-
 	if (especial) {
 		if (media >= 7) {
 			finalValue.innerHTML = `Você pode tirar 0.0 nas notas coringa. Sua média é <span class="mediaGreen">${media}</span>`
 		} else {
 			let necessario = (divisor * 7 - dividendo) / 10 / especial
 			if (necessario > 10) {
-				console.log(necessario)
-
 				finalValue.innerHTML = `Se você tirar <span class="mediaRed">10.0</span> em cada nota coringa, você precisa tirar <span class="mediaRed">X</span> na final para passar com 7.0`
 			} else {
 				let texto = "Você precisa tirar "
@@ -114,10 +113,12 @@ function verificaMedia() {
 }
 
 function resetNotas() {
-    let first = wrapper.children[0]
-    while(first.id != "novaNota"){
-        console.log(nota)
-        first.remove()
-        first = wrapper.children[0]
-    }
+	let first = wrapper.children[0]
+	while (first.id != "novaNota") {
+		first.remove()
+		first = wrapper.children[0]
+	}
+
+	let obs = document.querySelector("#finalValue")
+	obs.innerHTML = `Insira suas notas para eu calcular!<br />Deixe <span class="mediaYellow">vazio</span> o campo de <span class="mediaYellow">nota</span> para que eu possa te mostrar quanto você precisa.`
 }
