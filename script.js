@@ -1,11 +1,15 @@
+let wrapper = document.querySelector("#wrapperNotas")
 let novaNota = document.querySelector("#novaNota")
 let botaoAddNota = document.querySelector("#botaoAddNota")
+let btnReset = document.querySelector("#resetNotas")
 
 document.querySelector("#peso").value = 10
 botaoAddNota.addEventListener("click", addNota)
 window.addEventListener("keypress", function (e) {
 	if (e.key == "Enter") addNota()
 })
+document.querySelector("#nota").focus()
+btnReset.addEventListener("click", resetNotas)
 
 function addNota() {
 	let nota = document.querySelector("#nota")
@@ -26,7 +30,6 @@ function addNota() {
 }
 
 function insereNovaNota(nota, peso) {
-	let wrapper = document.querySelector("#wrapperNotas")
 	let inserirNota = document.querySelector("#novaNota")
 
 	let newNota = document.createElement("div")
@@ -42,14 +45,15 @@ function insereNovaNota(nota, peso) {
 	value2.classList.add("value")
 	value2.innerText = peso
 	let excluir = document.createElement("div")
-	excluir.classList.add("excluir")
+	excluir.classList.add("icon")
 
 	info1.innerHTML = "Nota: "
 	info1.appendChild(value1)
 	info2.innerHTML = "Peso: "
 	info2.appendChild(value2)
 	excluir.innerHTML = `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" > <path d="M19 24h-14c-1.104 0-2-.896-2-2v-17h-1v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2h-1v17c0 1.104-.896 2-2 2zm0-19h-14v16.5c0 .276.224.5.5.5h13c.276 0 .5-.224.5-.5v-16.5zm-7 7.586l3.293-3.293 1.414 1.414-3.293 3.293 3.293 3.293-1.414 1.414-3.293-3.293-3.293 3.293-1.414-1.414 3.293-3.293-3.293-3.293 1.414-1.414 3.293 3.293zm2-10.586h-4v1h4v-1z" /> </svg>`
-	newNota.appendChild(info1)
+	excluir.setAttribute("onclick", "excluirNota(this)")
+    newNota.appendChild(info1)
 	newNota.appendChild(info2)
 	newNota.appendChild(excluir)
 
@@ -109,6 +113,11 @@ function verificaMedia() {
 	}
 }
 
-function clickEspaco() {
-	console.log("click")
+function resetNotas() {
+    let first = wrapper.children[0]
+    while(first.id != "novaNota"){
+        console.log(nota)
+        first.remove()
+        first = wrapper.children[0]
+    }
 }

@@ -31,7 +31,7 @@ footer {
 	margin: 10px;
 	margin-top: auto;
 	padding: 10px 20px;
-    max-height: fit-content;
+	max-height: fit-content;
 }
 
 input {
@@ -62,21 +62,21 @@ input {
 	margin-left: 10px;
 }
 
-#finalValue span.mediaRed{
-    color: #F7665E;
+#finalValue span.mediaRed {
+	color: #f7665e;
 }
 
-#finalValue span.mediaYellow{
-    color: #F7EC69;
+#finalValue span.mediaYellow {
+	color: #f7ec69;
 }
 
-#finalValue span.mediaGreen{
-    color: #73D673;
+#finalValue span.mediaGreen {
+	color: #73d673;
 }
 
 .botaoVariableValue {
-    position: relative;
-    margin-left: auto;
+	position: relative;
+	margin-left: auto;
 }
 
 .inputValor {
@@ -96,51 +96,44 @@ input {
 	border-bottom: solid 1px white;
 }
 
-.excluir {
-    width: 30px;
-    height: 30px;
-    padding: 5px;
-    border-radius: 50%;
+.icon {
+	width: 30px;
+	height: 30px;
+	padding: 5px;
+	border-radius: 50%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	fill: white;
 	margin-left: auto;
 	transform: scale(0.8);
 
-    cursor: pointer;
-    transition: background-color 300ms ease,
-                fill 300ms ease;
+	cursor: pointer;
+	transition: background-color 300ms ease, fill 300ms ease;
 }
 
-.excluir:hover{
-    fill: #44c9e1;
-    background-color: white;
+.icon:hover {
+	fill: #44c9e1;
+	background-color: white;
 }
 
-#botaoAddNota {
-    width: 30px;
-    height: 30px;
-    margin-left: auto;
-    padding: 5px;
-    border-radius: 50%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    fill: white;
-    cursor: pointer;
-	transform: scale(0.8);
-    transition: background-color 300ms ease,
-                fill 300ms ease;
+#resetNotas {
+	transition: background-color 300ms ease, fill 300ms ease;
 }
 
-#botaoAddNota:hover{
-    fill: #44c9e1;
-    background-color: white;
+#resetNotas:hover {
+	animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(-360deg);
+	}
 }
 
 /* Chrome, Safari, Edge, Opera */
