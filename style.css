@@ -201,6 +201,6 @@ input[type="number"] {
 
 @media (max-width: 500px) {
 	#wrapperGlobal {
-		height: 90vh;
+		height: 100%;
 	}
 }
