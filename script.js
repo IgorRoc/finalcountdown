@@ -1,5 +1,5 @@
-let vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
+let vh = window.innerHeight * 0.01
+document.documentElement.style.setProperty("--vh", `${vh}px`)
 
 let wrapper = document.querySelector("#wrapperNotas")
 let novaNota = document.querySelector("#novaNota")
@@ -66,11 +66,10 @@ function insereNovaNota(nota, peso) {
 function excluirNota(object) {
 	object.parentElement.remove()
 	verificaMedia()
-	if(wrapper.childElementCount <= 1){
+	if (wrapper.childElementCount <= 1) {
 		let obs = document.querySelector("#finalValue")
 		obs.innerHTML = `Insira suas notas para eu calcular!<br />Deixe <span class="mediaYellow">vazio</span> o campo de <span class="mediaYellow">nota</span> para que eu possa te mostrar quanto você precisa.`
 	}
-
 }
 
 function verificaMedia() {
@@ -98,20 +97,37 @@ function verificaMedia() {
 		} else {
 			let necessario = (divisor * 7 - dividendo) / 10 / especial
 			if (necessario > 10) {
-				finalValue.innerHTML = `Se você tirar <span class="mediaRed">10.0</span> em cada nota coringa, você precisa tirar <span class="mediaRed">X</span> na final para passar com 7.0`
+				media = (dividendo + 100) / divisor
+				let quantoPrecisa = (5 - media * 0.6) / 0.4
+				let formatted = parseFloat(quantoPrecisa).toFixed(2)
+
+				finalValue.innerHTML = `Se você tirar <span class="mediaRed">10.0</span> em cada nota coringa, você precisa tirar <span class="mediaRed">${formatted}</span> na final para passar.`
 			} else {
 				let texto = "Você precisa tirar "
 				if (necessario < 7)
 					texto += `<span class="mediaGreen">${necessario}</span>`
 				else texto += `<span class="mediaRed">${necessario}</span>`
-				finalValue.innerHTML = `${texto} em cada nota coringa para passar com 7.0`
+				finalValue.innerHTML = `${texto} em cada nota coringa para passar.`
 			}
 		}
 	} else {
 		let mediaComCor
-		if (media < 7) mediaComCor = `<span class="mediaRed">${media}</span>`
-		else mediaComCor = `<span class="mediaGreen">${media}</span>`
-		finalValue.innerHTML = `Sua média é ${mediaComCor}`
+		media = media.toFixed(2)
+		if (media < 7) {
+			mediaComCor = `<span class="mediaRed">${media}</span>`
+			let quantoPrecisa = (5 - media * 0.6) / 0.4
+			let formatted = parseFloat(quantoPrecisa).toFixed(2)
+			let formattedComCor = `<span class="needsGrade">${formatted}</span>`
+
+			if (parseFloat(formatted) > 10) {
+				finalValue.innerHTML = `Sua média é ${mediaComCor}. Nem tirando 10 na final você consegue passar na disciplina. 😓`
+			} else {
+				finalValue.innerHTML = `Sua média é ${mediaComCor}. Você precisa tirar ${formattedComCor} na final para passar na disciplina.`
+			}
+		} else {
+			mediaComCor = `<span class="mediaGreen">${media}</span>`
+			finalValue.innerHTML = `Sua média é ${mediaComCor}`
+		}
 	}
 }
 
