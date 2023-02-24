@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
+:root {
+	--primary-color-light: hsl(158, 83%, 54%);
+	--primary-color: hsl(158, 83%, 34%);
+	--primary-color-hover: hsl(158, 83%, 24%);
+	--background-color: #36393f;
+	--footer-color: #2a2c30;
+
+	--danger-color: #f7665e;
+	--warning-color: #fbd757;
+	--success-color: #73d673;
+	--info-color: #44c9e1;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -7,7 +20,7 @@
 
 body {
 	font-family: "Rubik", sans-serif;
-	background-color: #181818;
+	background-color: var(--background-color);
 	width: 100vw;
 	height: 100vh;
 	display: flex;
@@ -38,7 +51,7 @@ main {
 
 footer {
 	max-height: 5vh;
-	background-color: #272727;
+	background-color: var(--footer-color);
 	border-radius: 7px;
 	color: #f1f1f1;
 
@@ -59,8 +72,7 @@ input {
 }
 
 .nota {
-	background-color: #272727;
-	box-shadow: 0 5px 10px #181818;
+	background-color: var(--footer-color);
 	border-radius: 7px;
 
 	display: flex;
@@ -72,30 +84,31 @@ input {
 }
 
 .info {
-	color: #44c9e1;
+	color: var(--info-color);
 	width: 200px;
 }
 
 .value {
-	color: #fbd757;
+	color: var(--warning-color);
 	margin-left: 10px;
 }
 
 #finalValue span.mediaRed {
-	color: #f7665e;
+	color: var(--danger-color);
 }
 
 #finalValue span.mediaYellow {
-	color: #f7ec69;
+	color: var(--warning-color);
 }
 
 #finalValue span.mediaGreen {
-	color: #73d673;
+	color: var(--success-color);
 }
 
 #finalValue span.needsGrade {
 	font-weight: bold;
 }
+
 
 .inputValor {
 	display: inline-block;
@@ -107,7 +120,7 @@ input {
 	outline: none;
 	border: none;
 	border-bottom: solid 1px #1b1b1b;
-	color: #fbd757;
+	color: var(--warning-color);
 }
 
 .inputValor:focus {
@@ -133,7 +146,7 @@ input {
 }
 
 .icon:hover {
-	fill: #44c9e1;
+	fill: var(--primary-color);
 	background-color: white;
 }
 
@@ -152,7 +165,7 @@ input {
 }
 
 #credits a {
-	color: #44e16b;
+	color: var(--primary-color);
 	text-decoration: none;
 }
 
@@ -175,6 +188,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
 	-moz-appearance: textfield;
+	appearance: textfield;
 }
 
 /* width */
