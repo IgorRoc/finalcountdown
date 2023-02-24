@@ -6,12 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Final Countdown</title>
 		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="utils.css" />
 		<link rel="shortcut icon" href="./logo.png" type="image/x-icon" />
 
-		<meta
-			name="description"
-			content="Calcule sua média final e quanto falta pra você passar"
-		/>
+		<meta name="description" content="Calcule sua média final e quanto falta pra você passar" />
 		<meta name="author" content="Igor Rocha" />
 		<meta name="creator" content="Igor Rocha" />
 
@@ -28,6 +26,9 @@
 		/>
 		<meta property="og:type" content="website" />
 		<meta property="og:updated_time" content="1440432930" />
+
+		<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
 	</head>
 	<body>
 		<div id="wrapperGlobal">
@@ -42,12 +43,7 @@
 					</div>
 					<div class="info">
 						Peso:
-						<input
-							id="peso"
-							class="inputValor"
-							type="number"
-							required
-						/>
+						<input id="peso" class="inputValor" type="number" required />
 					</div>
 					<div class="icon" id="botaoAddNota">
 						<!-- prettier-ignore -->
@@ -59,8 +55,8 @@
 				<p id="finalValue">
 					Insira suas notas para eu calcular!<br />
 					Deixe <span class="mediaYellow">vazio</span> o campo de
-					<span class="mediaYellow">nota</span> para que eu possa te
-					mostrar quanto você precisa.
+					<span class="info">Nota</span> e clique no <b>+</b>
+					para que eu possa te mostrar quanto você precisa.
 				</p>
 				<div id="resetNotas" class="icon resetNotas">
 					<!-- prettier-ignore -->
@@ -70,9 +66,7 @@
 			<section id="credits">
 				<p>
 					Feito com ☕ e ❤️ por
-					<a href="https://igorroc.github.io/igorroc" target="_blank"
-						>Igor Rocha</a
-					>
+					<a href="https://ilrocha.com" target="_blank">Igor Rocha</a>
 				</p>
 			</section>
 		</div>

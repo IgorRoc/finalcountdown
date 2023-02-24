@@ -75,14 +75,17 @@ function excluirNota(object) {
 function verificaMedia() {
 	let wrapper = document.querySelector("#wrapperNotas")
 	let finalValue = document.querySelector("#finalValue")
-	let media = (dividendo = divisor = especial = 0)
+	let media = 0
+	let dividendo = 0
+	let divisor = 0
+	let existeNotaCoringa = 0
 
 	for (const nota of wrapper.children) {
 		if (nota.id == "novaNota") break
 		let valor = nota.children[0].children[0].innerText
 		let peso = nota.children[1].children[0].innerText
 		if (valor == "?") {
-			especial++
+			existeNotaCoringa++
 		} else {
 			dividendo += valor * peso
 		}
@@ -91,23 +94,36 @@ function verificaMedia() {
 
 	media = dividendo / divisor
 
-	if (especial) {
+	if (existeNotaCoringa) {
 		if (media >= 7) {
-			finalValue.innerHTML = `Você pode tirar 0.0 nas notas coringa. Sua média é <span class="mediaGreen">${media}</span>`
+			finalValue.innerHTML = `Mesmo se você tirar <u>0.0</u> nas notas coringa, você passa com <span class="mediaGreen">${media}</span>. <span class="motivacional">Cê é o bichão mesmo ein?</span>😎`
 		} else {
-			let necessario = (divisor * 7 - dividendo) / 10 / especial
+			let necessario = (divisor * 7 - dividendo) / 10 / existeNotaCoringa
 			if (necessario > 10) {
 				media = (dividendo + 100) / divisor
 				let quantoPrecisa = (5 - media * 0.6) / 0.4
 				let formatted = parseFloat(quantoPrecisa).toFixed(2)
 
-				finalValue.innerHTML = `Se você tirar <span class="mediaRed">10.0</span> em cada nota coringa, você precisa tirar <span class="mediaRed">${formatted}</span> na final para passar.`
+				finalValue.innerHTML = `Se você tirar <span class="mediaRed">10.0</span> em cada nota coringa, você precisa tirar <span class="mediaRed">${formatted}</span> na final para passar. <span class="motivacional">Tá complicado, mas vai que dá!</span>🤗`
 			} else {
 				let texto = "Você precisa tirar "
-				if (necessario < 7)
+				let mensagemMotivacional = ""
+				let emojiMotivacional = ""
+				if (necessario < 7) {
 					texto += `<span class="mediaGreen">${necessario}</span>`
-				else texto += `<span class="mediaRed">${necessario}</span>`
-				finalValue.innerHTML = `${texto} em cada nota coringa para passar.`
+					mensagemMotivacional = "Metendo essa, você passa!"
+					emojiMotivacional = "🎉"
+				} else if (necessario >= 9) {
+					texto += `<span class="mediaRed">${necessario}</span>`
+					mensagemMotivacional = "Veja pelo lado bom: dá pra passar sem final!"
+					emojiMotivacional = "🫠"
+				} else {
+					texto += `<span class="mediaRed">${necessario}</span>`
+					mensagemMotivacional = "Mas não se preocupe, você consegue!"
+					emojiMotivacional = "🤗"
+				}
+				finalValue.innerHTML = `${texto} em cada nota coringa para passar.
+				<span class="motivacional">${mensagemMotivacional}</span>${emojiMotivacional}`
 			}
 		}
 	} else {
@@ -120,13 +136,32 @@ function verificaMedia() {
 			let formattedComCor = `<span class="needsGrade">${formatted}</span>`
 
 			if (parseFloat(formatted) > 10) {
-				finalValue.innerHTML = `Sua média é ${mediaComCor}. Nem tirando 10 na final você consegue passar na disciplina. 😓`
+				finalValue.innerHTML = `Sua média é ${mediaComCor}. Nem tirando 10 na final você consegue passar na disciplina. <span class="motivacional">Não foi dessa vez, vamos deixar pro próximo semestre</span>😓`
+			} else if (parseFloat(formatted) >= 7) {
+				finalValue.innerHTML = `Sua média é ${mediaComCor}. Você precisa tirar ${formattedComCor} na final para passar na disciplina. <span class="motivacional">Sei que tá difícil, mas deixar pro próximo semestre é pior</span> 😉`
+			} else if (parseFloat(formatted) >= 5) {
+				finalValue.innerHTML = `Sua média é ${mediaComCor}. Você precisa tirar ${formattedComCor} na final para passar na disciplina. <span class="motivacional">Não tá tão complicado assim. Vai que dá!</span> 😉`
 			} else {
-				finalValue.innerHTML = `Sua média é ${mediaComCor}. Você precisa tirar ${formattedComCor} na final para passar na disciplina.`
+				finalValue.innerHTML = `Sua média é ${mediaComCor}. Você precisa tirar ${formattedComCor} na final para passar na disciplina. <span class="motivacional">Falta pouco pra você se livrar dessa matéria!</span> 😎`
 			}
+		} else if (media > 10) {
+			mediaComCor = `<span class="mediaGreen">${media}</span>`
+			finalValue.innerHTML = `Não tenho ideia de como você conseguiu. Mas sua média é ${mediaComCor}! <span class="motivacional">Você tá mais do que aprovado! Me ensina?</span> 🥺<span class="dedoEsquerdo">👉</span><span class="dedoDireito">👈</span>`
+		} else if (media == 10) {
+			mediaComCor = `<span class="mediaGreen">${media}</span>`
+			finalValue.innerHTML = `Você é o novo Einstein? Não? Por que sua média é ${mediaComCor}! <span class="motivacional">Meteu essa?</span> 😎`
+		} else if (media >= 8.5) {
+			mediaComCor = `<span class="mediaGreen">${media}</span>`
+			finalValue.innerHTML = `Sua média é ${mediaComCor}! <span class="motivacional">Continue assim e logo logo o 10.0 é seu!</span> 💪`
+		} else if (media > 7) {
+			mediaComCor = `<span class="mediaGreen">${media}</span>`
+			finalValue.innerHTML = `Sua média é ${mediaComCor}. <span class="motivacional">Você está fazendo um ótimo trabalho!</span> 😉`
+		} else if (media == 7) {
+			mediaComCor = `<span class="mediaGreen">${media}</span>`
+			finalValue.innerHTML = `Sua média é exatamente ${mediaComCor}. <span class="motivacional">Foi no limite, ein?</span> 😅`
 		} else {
 			mediaComCor = `<span class="mediaGreen">${media}</span>`
-			finalValue.innerHTML = `Sua média é ${mediaComCor}`
+			finalValue.innerHTML = `Sua média é ${mediaComCor}. <span class="motivacional">Parabéns, você passou!</span> 🎉`
 		}
 	}
 }
