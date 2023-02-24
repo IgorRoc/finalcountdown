@@ -174,5 +174,8 @@ function resetNotas() {
 	}
 
 	let obs = document.querySelector("#finalValue")
-	obs.innerHTML = `Insira suas notas para eu calcular!<br />Deixe <span class="mediaYellow">vazio</span> o campo de <span class="mediaYellow">nota</span> para que eu possa te mostrar quanto você precisa.`
+	obs.innerHTML = `Insira suas notas para eu calcular!<br />
+	Deixe <span class="mediaYellow">vazio</span> o campo de
+	<span class="info">Nota</span> e clique no <b>+</b>
+	para que eu possa te mostrar quanto você precisa.`
 }
